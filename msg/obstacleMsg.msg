@@ -1,0 +1,6 @@
+string obstacle_id
+float32 x_center
+float32 y_center
+float32 radius
+float32 v_x_center
+float32 v_y_center
