@@ -1,0 +1,22 @@
+export GAZEBO_PLUGIN_PATH=$HOME/catkin_ws/src/GIP_optimal_navigation/build:$GAZEBO_PLUGIN_PATH
+
+roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=/home/miguel/catkin_ws/src/GIP_optimal_navigation/worlds/model_push.world
+
+# --> Simple world
+roslaunch ridgeback_gazebo ridgeback_world.launch world_file:=/home/miguel/catkin_ws/src/GIP_optimal_navigation/worlds/basic_sim.world
+
+# --> Moving cylinder
+roslaunch ridgeback_gazebo ridgeback_world.launch world_file:=/home/miguel/catkin_ws/src/GIP_optimal_navigation/worlds/model_push.world
+
+rosservice call /gazebo/set_model_state '{model_state: { model_name: mobile_base, pose: { position: { x: 0, y: 0 ,z: 0 }, orientation: {x: 0, y: 0, z: 1, w: 0 } }, twist: { linear: {x: 0.0 , y: 0 ,z: 0 } , angular: { x: 0.0 , y: 0 , z: 0.0 } } , reference_frame: world } }'
+
+python /home/miguel/GIP/listener_realTime.py
+
+
+________________________________________
+
+
+rosservice call /gazebo/set_model_state '{model_state: { model_name: mobile_base, pose: { position: { x: -4, y: -1 ,z: 0 }, orientation: {x: 0, y: 0, z: 1, w: 1 } }, twist: { linear: {x: 0.0 , y: 0 ,z: 0 } , angular: { x: 0.0 , y: 0 , z: 0.0 } } , reference_frame: world } }'
+
+
+rosservice call /gazebo/set_model_state '{model_state: { model_name: mobile_base, pose: { position: { x: -4.5, y: 0 ,z: 0 }, orientation: {x: 0, y: 0, z: 0, w: 1 } }, twist: { linear: {x: 0.0 , y: 0 ,z: 0 } , angular: { x: 0.0 , y: 0 , z: 0.0 } } , reference_frame: world } }'
